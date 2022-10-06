@@ -1,0 +1,53 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent } from './app.component';
+import { MenuUserComponent } from './pages/menu-user/menu-user.component';
+import { HeaderComponent } from './pages/header/header.component';
+import { BotoneraComponent } from './pages/botonera/botonera.component';
+import { AboutComponent } from './pages/about/about.component';
+import { EducacionComponent } from './pages/educacion/educacion.component';
+import { CertsComponent } from './pages/certs/certs.component';
+import { SkillsComponent } from './pages/skills/skills.component';
+import { ExpComponent } from './pages/exp/exp.component';
+import { ProjsComponent } from './pages/projs/projs.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
+import { FooterComponent } from './pages/footer/footer.component';
+import { FondoComponent } from './pages/fondo/fondo.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { PortfolioComponent } from './pages/portfolio/portfolio.component';
+import { SesionComponent } from './pages/sesion/sesion.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    MenuUserComponent,
+    HeaderComponent,
+    BotoneraComponent,
+    AboutComponent,
+    EducacionComponent,
+    CertsComponent,
+    SkillsComponent,
+    ExpComponent,
+    ProjsComponent,
+    ContactoComponent,
+    FooterComponent,
+    FondoComponent,
+    PortfolioComponent,
+    SesionComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

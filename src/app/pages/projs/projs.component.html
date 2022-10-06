@@ -1,0 +1,97 @@
+<section style="display: block" id="proyectos">
+  <div class="container alert" style="background-color: #ffffff1e; border-radius: 20px" role="alert">
+    <div class="row vh-md-100">
+      <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center" id="cuerpo">
+        <h1 class="heading-black">
+          Proyectos
+        </h1>
+
+        <div class="accordion mx-auto my-3" id="proyectosAcordion">
+
+          <div class="accordion-item" *ngFor="let dato of proyectos let i= index">
+            <div *ngIf="i==0;then seMuestra else noSeMuestra"></div>
+            <ng-template #noSeMuestra>
+              <h2 class="accordion-header" [id]="'heading'+i">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  [attr.data-bs-target]="'#collapse'+i" aria-expanded="false" [attr.aria-controls]="'collapse'+i">
+                  <b>{{dato.nombre}} - {{dato.fecha}}</b>
+                </button>
+            </h2>
+              <div [id]="'collapse'+i" class="accordion-collapse collapse " [attr.aria-labelledby]="'heading'+i"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                {{dato.informacion}}
+                <br>
+                <div *ngIf="dato.boton;then content"></div>
+                <ng-template #content>
+                  <div class="boton my-2" (click)="onNavigate(dato.boton)">{{dato.nombre}}</div>
+                </ng-template>
+              </div>
+            </div>
+            </ng-template>
+            <ng-template #seMuestra>
+              <h2 class="accordion-header" [id]="'heading'+i">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  [attr.data-bs-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+                  <b>{{dato.nombre}} - {{dato.fecha}}</b>
+                </button>
+            </h2>
+            <div [id]="'collapse'+i" class="accordion-collapse collapse show" [attr.aria-labelledby]="'heading'+i"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                {{dato.informacion}}
+                <br>
+                <div *ngIf="dato.boton;then content"></div>
+                <ng-template #content>
+                  <div class="boton my-2" (click)="onNavigate(dato.boton)">{{dato.nombre}}</div>
+                </ng-template>
+              </div>
+            </div>
+            </ng-template>
+          </div>
+
+
+          <!-- <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <b>Proyecto numero 2</b>
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div>
+
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <b>Proyecto numero 3</b>
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                </div>
+              </div>
+            </div> -->
+
+
+        </div>
+
+
+      </div>
+
+      <div class="cajaf">
+        <a class="btn_roundf" title="Menu Administrador" alt="Menu Administrador" style="text-decoration: none"><i
+            class="bx bx-expand-horizontal bx-md"></i></a>
+        <a class="caja1" href="#" alt="Editar" title="Editar" style="text-decoration: none"><i
+            class="bx bxs-edit bx-md"></i></a>
+        <a class="caja2" href="#" alt="Eliminar" title="Eliminar" style="text-decoration: none"><i
+            class="bx bxs-x-square bx-md"></i></a>
+      </div>
+    </div>
+  </div>
+</section>

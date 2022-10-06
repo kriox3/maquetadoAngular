@@ -1,0 +1,59 @@
+<div class="container centrarlo">
+
+    <div class="modal-dialog modal-dialog-centered tamanio" role="document">
+        <div class="modal-content" style="background-color: #404040; color: white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="iniciarSesionLabel">Inicie Sesion al Portfolio</h5>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="onEnviar($event)">
+                    <img class="mb-4" src="/assets/img/APlogo.png" alt="" width="150" />
+                    <h1 class="h3 mb-3 fw-normal">Ingrese sus credenciales</h1>
+
+                    <div class="form-floating">
+                        <input type="email" formControlName="email" 
+                        [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}"
+                        class="form-control" id="floatingInput" placeholder="nombre@ejemplo.com" />
+                        <label for="floatingInput" class="text-dark">Email</label>
+                        <div *ngIf="Email?.errors && Email?.touched">
+                            <p *ngIf="Email?.hasError('required')" class="text-danger">
+                                El email es requerido
+                            </p>
+                            <p *ngIf="Email?.hasError('email')" class="text-danger">
+                                El email debe ser valido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" formControlName="password" 
+                        [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}"
+                        class="form-control" id="floatingPassword" placeholder="Contraseña" />
+                        <label for="floatingPassword" class="text-dark">Contraseña</label>
+                        <div *ngIf="Password?.errors && Password?.touched">
+                            <p *ngIf="Password?.hasError('required')" class="text-danger">
+                                La contraseña es requerida
+                            </p>
+                            <p *ngIf="Password?.hasError('minlength')" class="text-danger">
+                                La contraseña debe ser de 8 o mas caracteres
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me" /> Recordame
+                        </label>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">
+                        Ingresar
+                    </button>
+                </form>
+            </div>
+            <!--  <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div> -->
+        </div>
+    </div>
+
+</div>

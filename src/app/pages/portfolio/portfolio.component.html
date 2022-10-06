@@ -1,0 +1,38 @@
+<!-- <app-menu-user></app-menu-user>
+<app-header></app-header>
+<app-botonera></app-botonera>
+
+<app-about></app-about>
+
+<app-educacion></app-educacion>
+<app-certs></app-certs>
+<app-skills></app-skills>
+<app-exp></app-exp>
+<app-projs></app-projs>
+<app-contacto></app-contacto>
+
+<app-footer></app-footer>
+
+<app-fondo></app-fondo> --><div class="container">
+
+<p>hola que tal</p>
+
+<table class="table table table-hover text-light">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Establecimiento</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dato of portfolio; let i= index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{dato}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div></div>
+
