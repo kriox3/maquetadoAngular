@@ -18,8 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
-import { SesionComponent } from './pages/sesion/sesion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+import { EncabezadoComponent } from './pages/encabezado/encabezado.component';
+import { InterceptorService } from './serv/interceptor-service';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     FondoComponent,
     PortfolioComponent,
-    SesionComponent
+    LoginComponent,
+    EncabezadoComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+    InterceptorService]
 })
 export class AppModule { }
