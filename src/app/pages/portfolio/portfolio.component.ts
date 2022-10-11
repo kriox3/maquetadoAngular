@@ -11,15 +11,20 @@ import { TokenService } from 'src/app/serv/token.service';
 export class PortfolioComponent implements OnInit {
 
   portfolio: Portfolio[] = [];
+  elPortfolio: any;
 
   constructor(private portfolioService: PortfolioService,
     private tokenService: TokenService) { }
 
   isLogged = false;
+  isLoggedAdmin = false;
   modalOn: boolean = false;
 
   ngOnInit(): void {
     this.cargarPortfolio();
+
+    if (this.tokenService.getAuthorities().includes('ROLE_ADMIN'))
+      this.isLoggedAdmin = true;
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     } else {
@@ -29,8 +34,8 @@ export class PortfolioComponent implements OnInit {
 
   cargarPortfolio(): void {
     this.portfolioService.lista().subscribe(data => {
-      this.portfolio = data;
-      console.log(data);
+      this.elPortfolio = data;
+      console.log('cargar: ' + JSON.stringify(data));
     });
   }
 

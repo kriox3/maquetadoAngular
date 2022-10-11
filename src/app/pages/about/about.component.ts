@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/serv/portfolio.service';
 
 @Component({
@@ -7,14 +7,13 @@ import { PortfolioService } from 'src/app/serv/portfolio.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  acercade:any;
+  @Input() paso: any;
+  @Input() modifica: any;
 
-  constructor(private datosPortfolio:PortfolioService) { }
+  constructor(private datosPortfolio:PortfolioService) {  }
 
-  ngOnInit(): void {
-    this.datosPortfolio.consultaDatos().subscribe(data =>{
-        this.acercade = data.acercade;
-    });
-  }
+  ngOnInit(): void { 
+    
+   }
 
 }

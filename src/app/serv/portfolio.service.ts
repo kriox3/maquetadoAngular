@@ -15,15 +15,7 @@ export class PortfolioService {
 
   constructor(private httpClient:HttpClient) { }
 
-  consultaDatos():Observable<any>{
-    return this.httpClient.get('./assets/data/datos.json');
-  }
-
   public lista(): Observable<Portfolio[]> {
     return this.httpClient.get<Portfolio[]>(this.portfolioURL, cabecera);
-  }
-
-  public detalle(): Observable<Portfolio> {
-    return this.httpClient.get<Portfolio>(this.portfolioURL, cabecera);
   }
 }

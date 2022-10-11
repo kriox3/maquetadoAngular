@@ -26,7 +26,6 @@ export class EncabezadoComponent implements OnInit {
 
   onLogOut():void{
     this.tokenService.logout();
-    window.location.reload();
   }
 
   login(){

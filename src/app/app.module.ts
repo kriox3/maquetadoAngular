@@ -14,7 +14,7 @@ import { ProjsComponent } from './pages/projs/projs.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { FondoComponent } from './pages/fondo/fondo.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { EncabezadoComponent } from './pages/encabezado/encabezado.component';
 import { InterceptorService } from './serv/interceptor-service';
+import { PortfolioService } from './serv/portfolio.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,10 @@ import { InterceptorService } from './serv/interceptor-service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    PortfolioService,
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
+  ],
   bootstrap: [
     AppComponent,
     InterceptorService]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/serv/portfolio.service';
 
 @Component({
@@ -7,15 +7,12 @@ import { PortfolioService } from 'src/app/serv/portfolio.service';
   styleUrls: ['./projs.component.css']
 })
 export class ProjsComponent implements OnInit {
-  proyectos:any;
+  @Input() proyectos: any;
+  @Input() modifica: any;
 
   constructor(private datosPortfolio:PortfolioService) { }
 
-  ngOnInit(): void {
-    this.datosPortfolio.consultaDatos().subscribe(data =>{
-        this.proyectos = data.proyectos;
-    });
-  }
+  ngOnInit(): void {}
 
   onNavigate(web:any){
     window.open(web, "_blank");

@@ -1,4 +1,4 @@
-<section style="display: block" id="certificaciones">
+<section style="display: none" id="certificaciones">
     <div
       class="container alert"
       style="background-color: #ffffff1e; border-radius: 20px"
@@ -33,7 +33,7 @@
           </table>
 
         </div>
-        <div class="cajaf">
+        <div class="cajaf" *ngIf="modifica">
           <a
             class="btn_roundf"
             title="Menu Administrador"

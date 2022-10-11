@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/serv/portfolio.service';
 
 @Component({
@@ -7,17 +7,41 @@ import { PortfolioService } from 'src/app/serv/portfolio.service';
   styleUrls: ['./contacto.component.css']
 })
 export class ContactoComponent implements OnInit {
-  redes:any;
+  @Input() redes: any;
+  @Input() modifica: any;
 
-  constructor(private datosPortfolio:PortfolioService) { }
-
-  ngOnInit(): void {
-    this.datosPortfolio.consultaDatos().subscribe(data =>{
-        this.redes = data.redes;
-    });
+  getRed(red: any) {
+    switch (red) {
+      case 'Facebook':
+        return 'bxl-facebook';
+      case 'Instagram':
+        return 'bxl-instagram';
+      case 'Telegram':
+        return 'bxl-telegram';
+      case 'Whatsapp':
+        return 'bxl-whatsapp';
+      case 'Youtube':
+        return 'bxl-youtube';
+      case 'Twitter':
+        return 'bxl-twitter';
+      case 'Coffee':
+        return 'bxs-coffee';
+      case 'LinkedIn':
+        return 'bxl-linkedin';
+      case 'Web':
+        return 'bx-globe';
+      default:
+        return;
+    }
   }
 
-  onNavigate(web:any){
+  constructor(private datosPortfolio: PortfolioService) { }
+
+  ngOnInit(): void { }
+
+  onNavigate(web: any) {
     window.open(web, "_blank");
-}
+
+
+  }
 }

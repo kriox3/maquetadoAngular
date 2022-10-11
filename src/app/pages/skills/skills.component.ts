@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/serv/portfolio.service';
 
 @Component({
@@ -7,13 +7,11 @@ import { PortfolioService } from 'src/app/serv/portfolio.service';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
-  habilidades:any;
+  @Input() habilidades: any;
+  @Input() modifica: any;
 
   constructor(private datosPortfolio:PortfolioService) { }
 
-  ngOnInit(): void {
-    this.datosPortfolio.consultaDatos().subscribe(data =>{
-        this.habilidades = data.habilidades;
-    });
-  }
+  ngOnInit(): void {};
+  
 }

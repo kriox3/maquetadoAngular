@@ -8,27 +8,27 @@
             <tr>
               <td rowspan="3">
                 <img
-                  [src]="acercade.foto"
+                  [src]="paso.foto_persona"
                   class="circulo">
               </td>
-              <td class="izquierda"><i class='bx bxl-xing'></i> {{acercade.nombre}}</td>
+              <td class="izquierda"><i class='bx bxl-xing'></i> {{paso.apellido_persona}}, {{paso.nombre_persona}}</td>
             </tr>
             <tr>
-              <td class="izquierda"><i class='bx bx-hard-hat'></i> {{acercade.cargo}} en {{acercade.oficina}}</td>
+              <td class="izquierda"><i class='bx bx-hard-hat'></i> {{paso.cargo_persona}} en {{paso.oficina_persona}}</td>
             </tr>
             <tr>
-              <td class="izquierda"><i class='bx bx-current-location'></i> {{acercade.localidad}}</td>
+              <td class="izquierda"><i class='bx bx-current-location'></i> {{paso.localidad_persona}}</td>
             </tr>
             <tr class="pt-2">
               <td colspan="4">
-                  <p style="font-size: 1rem;">{{acercade.info}}</p>
+                  <p style="font-size: 1rem;">{{paso.info_persona}}</p>
               </td>
             </tr>
           </tbody>
         </table>
 
       </div>
-      <div class="cajaf">
+      <div class="cajaf" *ngIf="modifica">
         <a class="btn_roundf" title="Menu Administrador" alt="Menu Administrador" style="text-decoration: none"><i
             class="bx bx-expand-horizontal bx-md"></i></a>
         <a class="caja1" href="#" alt="Editar" title="Editar" style="text-decoration: none"><i
