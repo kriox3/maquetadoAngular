@@ -520,4 +520,19 @@ body{
   }
 }
 
+.btn-azul {
+    filter: hue-rotate(0deg);
+}
+.btn-rosa{
+    filter: hue-rotate(110deg);
+}
+.btn-verde{
+    filter: hue-rotate(270deg);
+}
+
 /* BOTONITOS NEON */
+
+.fondo-oscuro{
+  background-color: #404040; 
+  color: "white";
+}

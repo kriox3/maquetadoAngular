@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/serv/portfolio.service';
+import { AboutMeService } from 'src/app/serv/aboutme.service';
+import { AboutMe } from 'src/app/models/about-me';
 
 @Component({
   selector: 'app-about',
@@ -10,10 +12,26 @@ export class AboutComponent implements OnInit {
   @Input() paso: any;
   @Input() modifica: any;
 
-  constructor(private datosPortfolio:PortfolioService) {  }
+  aboutMe: AboutMe = new AboutMe();
 
-  ngOnInit(): void { 
-    
-   }
+  constructor(private datosPortfolio: PortfolioService,
+    private aboutMeService: AboutMeService) { }
+
+  ngOnInit(): void {
+  }
+
+  cargarAboutMe(): void {
+    this.aboutMeService.ver().subscribe(data => {
+      this.aboutMe = data;
+    })
+  }
+
+  devolverAboutMe():AboutMe {
+    this.aboutMeService.ver().subscribe(data => {
+      this.aboutMe = data;
+      
+    })
+    return this.aboutMe;
+  }
 
 }

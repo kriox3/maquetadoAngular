@@ -10,8 +10,11 @@ import { NuevoUsuario } from '../models/nuevo-usuario';
 })
 export class AuthService {
   authURL = 'http://localhost:8080/api/auth/';
+  CurrentUserSubject: BehaviorSubject<any>;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    this.CurrentUserSubject= new BehaviorSubject<any>(JSON.stringify(sessionStorage || '{}'));
+  }
 
   public nuevo(nuevoUsuario: NuevoUsuario): Observable<any> {
     return this.httpClient.post<any>(this.authURL + 'nuevo', nuevoUsuario);
@@ -19,5 +22,9 @@ export class AuthService {
 
   public login(loginUsuario: LoginUsuario): Observable<JwtDto> {
     return this.httpClient.post<JwtDto>(this.authURL + 'login', loginUsuario)
+  }
+
+  get UsuarioAutenticado(){
+    return this.CurrentUserSubject.value;
   }
 }

@@ -35,7 +35,6 @@ export class PortfolioComponent implements OnInit {
   cargarPortfolio(): void {
     this.portfolioService.lista().subscribe(data => {
       this.elPortfolio = data;
-      console.log('cargar: ' + JSON.stringify(data));
     });
   }
 

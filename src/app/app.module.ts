@@ -23,6 +23,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { EncabezadoComponent } from './pages/encabezado/encabezado.component';
 import { InterceptorService } from './serv/interceptor-service';
 import { PortfolioService } from './serv/portfolio.service';
+import { AboutEditComponent } from './pages/about/about-edit/about-edit.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PortfolioService } from './serv/portfolio.service';
     FondoComponent,
     PortfolioComponent,
     LoginComponent,
-    EncabezadoComponent
+    EncabezadoComponent,
+    AboutEditComponent
   ],
   imports: [
     BrowserModule,

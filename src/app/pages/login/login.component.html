@@ -5,7 +5,7 @@
     <div class="modal-content" style="background-color: #404040; color: white">
       <div class="modal-body">
         <form [formGroup]="form" (ngSubmit)="onLogin()" #f="ngForm" novalidate>
-          <img class="mb-4" src="/assets/img/APlogo.png" alt="" width="150" />
+          <img src="/assets/img/APlogo.png" alt="" width="200" />
           <div class="form-floating">
             <input type="email" formControlName="email" class="form-control" id="floatingInput"
               [(ngModel)]="nombreUsuario" required placeholder="name@example.com">
