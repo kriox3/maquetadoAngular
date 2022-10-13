@@ -17,78 +17,77 @@ export class LoginComponent implements OnInit {
   isLogginFail = false;
   loginUsuario!: LoginUsuario;
   nombreUsuario!: string;
-  password! : string;
+  password!: string;
   roles: string[] = [];
   errMsj!: string;
   form: FormGroup;
 
   // Inyectar en el constructor el formBuilder
-  constructor(private formBuilder: FormBuilder, private tokenService: TokenService , private authService: AuthService, private router: Router){ 
+  constructor(private formBuilder: FormBuilder, private tokenService: TokenService, private authService: AuthService, private router: Router) {
     ///Creamos el grupo de controles para el formulario de login
-    this.form= this.formBuilder.group({
-      password:['',[Validators.required, Validators.minLength(4)]],
-      email:['', [Validators.required, Validators.email]],
-   })
+    this.form = this.formBuilder.group({
+      password: ['', [Validators.required, Validators.minLength(4)]],
+      email: ['', [Validators.required, Validators.email]],
+    })
   }
 
   ngOnInit(): void {
-    if(this.tokenService.getToken()){
+    if (this.tokenService.getToken()) {
       this.isLogged = true;
       this.isLogginFail = false;
       this.roles = this.tokenService.getAuthorities();
     }
   }
 
-  onLogin(): void{
-    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password); 
-    this.authService.login(this.loginUsuario).subscribe(data =>{
-        this.isLogged = true;
-        this.isLogginFail = false;
-        this.tokenService.setToken(data.token);
-        this.tokenService.setUsername(data.nombreUsuario);
-        this.tokenService.setAuthorities(data.authorities);
-        this.roles = data.authorities;
-        this.router.navigate(['/portfolio'])
-        
-      }, err =>{
-        this.isLogged = false;
-        this.isLogginFail = true;
-        this.errMsj = err.error.mensaje;
-        console.log(this.errMsj);
-        
-      })
+  onLogin(): void {
+    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
+    this.authService.login(this.loginUsuario).subscribe(data => {
+      this.isLogged = true;
+      this.isLogginFail = false;
+      this.tokenService.setToken(data.token);
+      this.tokenService.setUsername(data.nombreUsuario);
+      this.tokenService.setAuthorities(data.authorities);
+      this.roles = data.authorities;
+      let suc = alert("Acceso Correcto. Redireccionando");
+      this.router.navigate(['/portfolio']);
+    }, err => {
+      this.isLogged = false;
+      this.isLogginFail = true;
+      let er = alert("Acceso Incorrecto");
+
+    })
   }
 
-  get Password(){
+  get Password() {
     return this.form.get("password");
   }
- 
-  get Mail(){
-   return this.form.get("email");
+
+  get Mail() {
+    return this.form.get("email");
   }
 
-  get PasswordValid(){
+  get PasswordValid() {
     return this.Password?.touched && !this.Password?.valid;
   }
 
   get MailValid() {
     return false
   }
- 
 
-  onEnviar(event: Event){
+
+  onEnviar(event: Event) {
     // Detenemos la propagación o ejecución del compotamiento submit de un form
-    event.preventDefault; 
- 
-    if (this.form.valid){
+    event.preventDefault;
+
+    if (this.form.valid) {
       // Llamamos a nuestro servicio para enviar los datos al servidor
       // También podríamos ejecutar alguna lógica extra
       alert("Todo salio bien ¡Enviar formuario!")
-    }else{
+    } else {
       // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
-      this.form.markAllAsTouched(); 
+      this.form.markAllAsTouched();
     }
- 
+
   }
 
 

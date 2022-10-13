@@ -24,6 +24,8 @@ import { EncabezadoComponent } from './pages/encabezado/encabezado.component';
 import { InterceptorService } from './serv/interceptor-service';
 import { PortfolioService } from './serv/portfolio.service';
 import { AboutEditComponent } from './pages/about/about-edit/about-edit.component';
+import { ContactoListarComponent } from './pages/contacto/contacto-listar/contacto-listar.component';
+import { ContactoNuevoComponent } from './pages/contacto/contacto-nuevo/contacto-nuevo.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { AboutEditComponent } from './pages/about/about-edit/about-edit.componen
     PortfolioComponent,
     LoginComponent,
     EncabezadoComponent,
-    AboutEditComponent
+    AboutEditComponent,
+    ContactoListarComponent,
+    ContactoNuevoComponent
   ],
   imports: [
     BrowserModule,

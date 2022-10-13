@@ -41,7 +41,9 @@ export class ContactoComponent implements OnInit {
 
   onNavigate(web: any) {
     window.open(web, "_blank");
+  }
 
-
+  reloadME(): void {
+    window.location.reload();
   }
 }

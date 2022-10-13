@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from '../../serv/portfolio.service';
 import { Portfolio } from '../../models/portfolio';
 import { TokenService } from 'src/app/serv/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-portfolio',
@@ -14,7 +15,8 @@ export class PortfolioComponent implements OnInit {
   elPortfolio: any;
 
   constructor(private portfolioService: PortfolioService,
-    private tokenService: TokenService) { }
+    private tokenService: TokenService,
+    private router: Router) { }
 
   isLogged = false;
   isLoggedAdmin = false;
@@ -30,6 +32,10 @@ export class PortfolioComponent implements OnInit {
     } else {
       this.isLogged = false;
     }
+  }
+
+  reloadME(): void{
+    window.location.reload();
   }
 
   cargarPortfolio(): void {

@@ -1,0 +1,103 @@
+<!-- EDUCACIÓN -->
+<div class="margenes" id="contacto">
+    <h1 class="display-5 fw-bold">Contacto</h1>
+    <div class="mt-2 mb-4 text-white bg-dark rounded-3">
+        <div class="container-fluid py-5">
+
+            <p>Estudios alcanzados hasta la fecha.
+            </p>
+
+            <div class="accordion" id="accordionExample" *ngFor="let contacto of contactoLista; let i= index">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" [id]="'heading'+i+1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          [attr.data-bs-target]="'#collapse'+i+1" aria-expanded="false" [attr.aria-controls]="'collapse'+i+1">
+                            La red: {{contacto.red.red}}
+                        </button>
+                    </h2>
+                    <div [id]="'collapse'+i+1" class="accordion-collapse collapse " [attr.aria-labelledby]="'heading'+i+1"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                            <h4 *ngIf="!modalOn">Persona: {{contacto.persona}}</h4>
+                            <div class="accordion-body editDelete">
+                                <span *ngIf="!modalOn" class="education-date">{{contacto.accesoUrl}}</span>
+
+                                <div class="accordion-body editDelete buttons" *ngIf="isLogged">
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn" (click)="onModal()" *ngIf="!modalOn">
+                                        Editar
+                                    </button>
+
+                                    <form (ngSubmit)="onDeleteContacto(contacto.id)" novalidate #f="ngForm"
+                                        *ngIf="!modalOn">
+                                        <button type="submit" class="btn" [disabled]="!f.valid">
+                                            Borrar
+                                        </button>
+                                    </form>
+
+                                </div>
+
+                                <!-- Modal -->
+                                <div role="dialog" id="miModal" class="col" *ngIf="modalOn">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content" style="color:black">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Editar educación</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close" (click)="onModalOff()"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container">
+
+                                                    <form (ngSubmit)="onUpdateCon(contacto.id)" novalidate #f="ngForm">
+
+                                                        <div class="form-group">
+                                                            <label for="red">red</label>
+                                                            <input type="text" class="form-control" id="red"
+                                                                placeholder="Nombre del título obtenido" name="red"
+                                                                [(ngModel)]="contacto.red.id" required>
+
+                                                                <!-- kriox3: este no esta mandando el id para actualizar -->
+                                                        </div>
+                                                       <!--  <div class="form-group">
+                                                            <label for="persona">persona_id</label>
+                                                            <input type="text" class="form-control" id="persona"
+                                                                placeholder="Nombre del establecimiento educativo"
+                                                                name="persona" [(ngModel)]="contacto.persona.id"
+                                                                required>
+                                                        </div> -->
+                                                        <div class="form-group">
+                                                            <label for="accesoUrl">accesoUrl</label>
+                                                            <input type="text" class="form-control" id="accesoUrl"
+                                                                placeholder="aaaa" name="accesoUrl"
+                                                                [(ngModel)]="contacto.accesoUrl" required>
+                                                        </div>
+
+                                                        <button type="submit" class="btn btn-primary"
+                                                            [disabled]="!f.valid">Guardar
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modelId2"
+                *ngIf="isLogged">
+                Agregar más
+            </button>
+
+            <app-contacto-nuevo></app-contacto-nuevo>
+
+        </div>
+    </div>
+</div>
