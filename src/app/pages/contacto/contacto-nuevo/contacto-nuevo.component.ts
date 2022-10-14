@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AboutMe } from 'src/app/models/about-me';
 import { Contacto } from 'src/app/models/contacto';
@@ -14,6 +14,8 @@ import { ContactoComponent } from '../contacto.component';
   styleUrls: ['./contacto-nuevo.component.css']
 })
 export class ContactoNuevoComponent implements OnInit {
+
+  @Input() redes: any;
 
   id?: number;
   accesoUrl: string = '';

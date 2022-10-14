@@ -24,7 +24,7 @@ export class ContactoService {
 
   //para actualizar una
   public updateContacto(id: number, contacto: Contacto): Observable<any>{
-    return this.http.put<any>(this.URL+ `editar/${id}?id=${id}&accesoUrl=${contacto.accesoUrl}`, contacto);
+    return this.http.put<any>(this.URL+ `editar/${id}?id=${id}&red=${contacto.red.id}&accesoUrl=${contacto.accesoUrl}`, contacto);
   }
 
   //para borrar una

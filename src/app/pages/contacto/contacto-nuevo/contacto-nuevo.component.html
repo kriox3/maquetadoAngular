@@ -8,24 +8,23 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    
+
                     <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
 
                         <div class="form-group">
                             <label for="accesoUrl">accesoUrl</label>
-                            <input type="text" class="form-control" id="accesoUrl" placeholder="Nombre del título obtenido"
-                                name="accesoUrl" [(ngModel)]="accesoUrl" required>
-                        </div>
-<!--                         <div class="form-group">
-                            <label for="persona">persona</label>
-                            <input type="text" class="form-control" id="persona"
-                                placeholder="Nombre del establecimiento educativo" name="persona" [(ngModel)]="persona.id"
+                            <input type="text" class="form-control" id="accesoUrl"
+                                placeholder="Nombre del título obtenido" name="accesoUrl" [(ngModel)]="accesoUrl"
                                 required>
-                        </div> -->
+                        </div>
+
                         <div class="form-group">
-                            <label for="red">red</label>
-                            <input type="text" class="form-control" id="red" placeholder=""
-                                name="red" [(ngModel)]="red.id" required>
+                            <label for="red">Red:</label>
+
+                            <select  class="form-control" name="red" id="red" [(ngModel)]="red.id"  required>
+                                <option [ngValue]="null" disabled>Elegi la Red:</option>
+                                <option *ngFor="let red of redes" value="{{red.id}}">{{red.red}}</option>
+                            </select>
                         </div>
 
                         <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Guardar</button>

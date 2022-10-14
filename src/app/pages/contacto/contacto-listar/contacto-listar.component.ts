@@ -4,6 +4,7 @@ import { AboutMe } from 'src/app/models/about-me';
 import { Contacto } from 'src/app/models/contacto';
 import { Red } from 'src/app/models/red';
 import { ContactoService } from 'src/app/serv/contacto.service';
+import { RedService } from 'src/app/serv/red.service';
 import { TokenService } from 'src/app/serv/token.service';
 import { PortfolioComponent } from '../../portfolio/portfolio.component';
 
@@ -17,12 +18,14 @@ export class ContactoListarComponent implements OnInit {
   id?: number;
   accesoUrl: string = '';
   persona: AboutMe = new AboutMe;
-  red: Red = new Red("", 0);
+  red: Red = new Red("", 1);
 
   contacto: Contacto = new Contacto("", this.persona, this.red, 0);
   contactoLista: Contacto[] = [];
+  redesLista: Red[] = [];
 
   constructor(private contactoService: ContactoService,
+    private redService: RedService,
     private tokenService: TokenService,
     private router: Router,
     private portfolio: PortfolioComponent) { }
@@ -41,8 +44,15 @@ export class ContactoListarComponent implements OnInit {
   }
 
   public cargarContacto(): void {
+    this.cargarRedes();
     this.contactoService.getContacto().subscribe(data => {
       this.contactoLista = data;
+    })
+  }
+
+  public cargarRedes(): void {
+    this.redService.getRedes().subscribe(data => {
+      this.redesLista = data;
     })
   }
 
@@ -61,10 +71,10 @@ export class ContactoListarComponent implements OnInit {
 
   onUpdateCon(id?: number) {
     let cont = this.contactoLista.find(x => x.id == id);
+    /* const cont = new Contacto(this.accesoUrl, this.persona, this.red, this.id); */
     if (id != undefined && cont != undefined) {
       this.contactoService.updateContacto(id, cont).subscribe(
         data => {
-          alert(JSON.stringify(data));
           this.cargarContacto();
           let a = alert("Modificada la red");
           this.portfolio.reloadME();
