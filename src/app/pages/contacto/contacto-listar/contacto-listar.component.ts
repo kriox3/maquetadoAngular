@@ -17,7 +17,6 @@ export class ContactoListarComponent implements OnInit {
 
   id?: number;
   accesoUrl: string = '';
-  /* persona: AboutMe = new AboutMe; */
   persona: AboutMe = new AboutMe("","","","","",0);
   red: Red = new Red("", 1);
 

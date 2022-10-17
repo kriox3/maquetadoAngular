@@ -26,6 +26,8 @@ import { PortfolioService } from './serv/portfolio.service';
 import { AboutEditComponent } from './pages/about/about-edit/about-edit.component';
 import { ContactoListarComponent } from './pages/contacto/contacto-listar/contacto-listar.component';
 import { ContactoNuevoComponent } from './pages/contacto/contacto-nuevo/contacto-nuevo.component';
+import { EducacionListarComponent } from './pages/educacion/educacion-listar/educacion-listar.component';
+import { EducacionNuevoComponent } from './pages/educacion/educacion-nuevo/educacion-nuevo.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { ContactoNuevoComponent } from './pages/contacto/contacto-nuevo/contacto
     EncabezadoComponent,
     AboutEditComponent,
     ContactoListarComponent,
-    ContactoNuevoComponent
+    ContactoNuevoComponent,
+    EducacionListarComponent,
+    EducacionNuevoComponent
   ],
   imports: [
     BrowserModule,

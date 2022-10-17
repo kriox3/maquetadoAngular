@@ -16,7 +16,6 @@ import { ContactoComponent } from '../contacto.component';
 export class ContactoNuevoComponent implements OnInit {
 
   @Input() redes: any;
-/*   @Input() newModalOn: any; */
 
   id?: number;
   accesoUrl: string = '';

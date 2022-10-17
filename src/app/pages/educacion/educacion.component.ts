@@ -14,4 +14,8 @@ export class EducacionComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  reloadME(): void {
+    window.location.reload();
+  }
+
 }
