@@ -14,8 +14,8 @@ export class AboutEditComponent implements OnInit {
   
 
   isLogged = false;
-  aboutMe: AboutMe = new AboutMe();
-  @Input() datos: any;
+ /*  aboutMe: AboutMe = new AboutMe(); */
+  aboutMe: AboutMe = new AboutMe("","","","","",0);
 
   constructor(
     private aboutMeService: AboutMeService,
@@ -25,10 +25,13 @@ export class AboutEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.cargarDatos();
   }
 
   cargarDatos(){
-    this.aboutMeComp.cargarAboutMe();
+    this.aboutMeService.ver().subscribe(data => {
+      this.aboutMe = data;
+    })
   }
 
   onUpdate(): void {

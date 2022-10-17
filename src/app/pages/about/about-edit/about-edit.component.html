@@ -21,36 +21,37 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post" (ngSubmit)="onUpdate()" #f="ngForm">
+                    <form (ngSubmit)="onUpdate()" #f="ngForm">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="{{datos.nombre}}"
-                                name="Nombre" [(ngModel)]="aboutMe.nombre" required>
+                            <input type="text" class="form-control" id="nombre" 
+                                name="nombre" [(ngModel)]="aboutMe.nombre" required>
                         </div>
                         <div class="form-group">
                             <label for="apellido">Apellido</label>
-                            <input type="text" class="form-control" id="apellido" placeholder="{{datos.apellido}}"
-                                name="Apellido" [(ngModel)]="aboutMe.apellido" required>
+                            <input type="text" class="form-control" id="apellido" 
+                                name="apellido" [(ngModel)]="aboutMe.apellido" required>
                         </div>
                         <div class="form-group">
                             <label for="foto">Foto</label>
-                            <input type="text" class="form-control" id="foto" placeholder="{{datos.foto}}" name="Foto"
+                            <input type="text" class="form-control" id="foto" name="foto"
                                 [(ngModel)]="aboutMe.foto" required>
                         </div>
                         <div class="form-group">
                             <label for="localidad">Localidad</label>
-                            <input type="text" class="form-control" id="localidad" placeholder="{{datos.localidad}}"
-                                name="Localidad" [(ngModel)]="aboutMe.localidad" required>
+                            <input type="text" class="form-control" id="localidad" 
+                                name="localidad" [(ngModel)]="aboutMe.localidad"  required>
                         </div>
                         <div class="form-group">
                             <label for="info">Informacion</label>
-                            <input type="text" class="form-control" id="info" placeholder="{{datos.info}}"
-                                name="Informacion" [(ngModel)]="aboutMe.info" required>
-                        </div>
+                            <input type="text" class="form-control" id="info"
+                                name="info" [(ngModel)]="aboutMe.info" required>
+                        </div>     
+
                         <hr>
                         <div>
-                            <button type="submit" class="botonito btn-verde mb-3" [disabled]="f.form.invalid"
-                                style="margin: auto; display:flex">
+                            <button type="submit" class="btn botonito btn-verde mb-3" 
+                                style="margin: auto; display:flex" [disabled]="!f.valid">
                                 <span></span>
                                 <span></span>
                                 <span></span>

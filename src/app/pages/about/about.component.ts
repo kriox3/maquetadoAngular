@@ -12,7 +12,7 @@ export class AboutComponent implements OnInit {
   @Input() paso: any;
   @Input() modifica: any;
 
-  aboutMe: AboutMe = new AboutMe();
+  aboutMe: AboutMe = new AboutMe("","","","","",0);
 
   constructor(private datosPortfolio: PortfolioService,
     private aboutMeService: AboutMeService) { }

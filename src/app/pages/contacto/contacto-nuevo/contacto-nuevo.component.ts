@@ -16,11 +16,14 @@ import { ContactoComponent } from '../contacto.component';
 export class ContactoNuevoComponent implements OnInit {
 
   @Input() redes: any;
+/*   @Input() newModalOn: any; */
 
   id?: number;
   accesoUrl: string = '';
-  persona: AboutMe = new AboutMe;
+  persona: AboutMe = new AboutMe("","","","","",0);
   red: Red = new Red("", 1);
+
+  newModalOn = false;
 
   constructor(private contactoService: ContactoService,
     private contComp: ContactoListarComponent,
@@ -41,6 +44,14 @@ export class ContactoNuevoComponent implements OnInit {
             
     }
     )
+  }
+
+  onNewModal() {
+    this.newModalOn = true;
+  }
+
+  onNewModalOff() {
+    this.newModalOn = false;
   }
 
 }

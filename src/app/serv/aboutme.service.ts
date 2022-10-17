@@ -26,8 +26,12 @@ export class AboutMeService {
     return this.httpClient.delete<any>(this.URL + `borrar/${id}`);
   }
 
-  public ver(): Observable<Object> {  
+  /* public ver(): Observable<Object> {  
     return this.httpClient.get(`${this.URL}ver`);  
+  }   */
+
+  public ver(): Observable<AboutMe> {  
+    return this.httpClient.get<AboutMe>(`${this.URL}ver`);  
   }  
 }
 
