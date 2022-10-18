@@ -32,6 +32,8 @@ import { CertsListarComponent } from './pages/certs/certs-listar/certs-listar.co
 import { CertsNuevoComponent } from './pages/certs/certs-nuevo/certs-nuevo.component';
 import { ExpListarComponent } from './pages/exp/exp-listar/exp-listar.component';
 import { ExpNuevoComponent } from './pages/exp/exp-nuevo/exp-nuevo.component';
+import { ProjsListarComponent } from './pages/projs/projs-listar/projs-listar.component';
+import { ProjsNuevoComponent } from './pages/projs/projs-nuevo/projs-nuevo.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { ExpNuevoComponent } from './pages/exp/exp-nuevo/exp-nuevo.component';
     CertsListarComponent,
     CertsNuevoComponent,
     ExpListarComponent,
-    ExpNuevoComponent
+    ExpNuevoComponent,
+    ProjsListarComponent,
+    ProjsNuevoComponent
   ],
   imports: [
     BrowserModule,
