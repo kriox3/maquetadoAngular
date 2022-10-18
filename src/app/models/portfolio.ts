@@ -7,10 +7,5 @@ export class Portfolio {
 	oficina_persona?: string;
 	localidad_persona?: string;
 	info_persona?: string;
-	certificaciones?: Array<any>;
-	educaciones?: Array<any>;
-	experiencias?: Array<any>;
-	habilidades?: Array<any>;
-	proyectos?: Array<any>;
 	redes?: Array<any>;
 }

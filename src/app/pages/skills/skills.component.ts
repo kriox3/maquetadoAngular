@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/serv/portfolio.service';
+import { Habilidad } from 'src/app/models/habilidad';
+import { HabilidadService } from 'src/app/serv/habilidad.service';
+import { TokenService } from 'src/app/serv/token.service';
 
 @Component({
   selector: 'app-skills',
@@ -7,11 +9,33 @@ import { PortfolioService } from 'src/app/serv/portfolio.service';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
-  @Input() habilidades: any;
-  @Input() modifica: any;
+  listaHabilidad: Habilidad[] = [];
+  modifica= false;
+  isLogged = false;
 
-  constructor(private datosPortfolio:PortfolioService) { }
+  constructor(private habilidadService: HabilidadService,
+    private tokenService: TokenService) { }
 
-  ngOnInit(): void {};
-  
+  ngOnInit(): void {
+    this.cargarHabilidad();
+
+    if (this.tokenService.getAuthorities().includes('ROLE_ADMIN')){
+      this.modifica = true;
+    }
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+  }
+
+  public cargarHabilidad(): void {
+    this.habilidadService.getHabilidad().subscribe(data => {
+      this.listaHabilidad = data;
+    })
+  }
+
+  reloadME(): void {
+    window.location.reload();
+  }
 }

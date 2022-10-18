@@ -1,15 +1,15 @@
-<section style="display: block" id="habilidades">
+<section style="display: block" id="habilidadess">
   <div class="container alert" style="background-color: #ffffff1e; border-radius: 20px" role="alert">
     <div class="row vh-md-100">
       <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center" id="cuerpo">
-        <h1 class="heading-black mb-2">
+        <h1 class="heading-black mb-2 text-light">
           Habilidades
         </h1>
 
         <div class="container">
           <div class="row">
-            <div class="col-md-4 my-4" *ngFor="let dato of habilidades">
-              <span class="lead py-3" style="font-size: 1.2rem;">{{dato.habilidad}}</span>
+            <div class="col-md-4 my-4" *ngFor="let dato of listaHabilidad">
+              <span class="lead py-3 text-light" style="font-size: 1.2rem;">{{dato.nombre}}</span>
               <div class="centrarlo">
                 <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [style]="'--value:'+dato.porcentaje">
                 </div>
@@ -21,14 +21,7 @@
 
         
       </div>
-      <div class="cajaf" *ngIf="modifica">
-        <a class="btn_roundf" title="Menu Administrador" alt="Menu Administrador" style="text-decoration: none"><i
-            class="bx bx-expand-horizontal bx-md"></i></a>
-        <a class="caja1" href="#" alt="Editar" title="Editar" style="text-decoration: none"><i
-            class="bx bxs-edit bx-md"></i></a>
-        <a class="caja2" href="#" alt="Eliminar" title="Eliminar" style="text-decoration: none"><i
-            class="bx bxs-x-square bx-md"></i></a>
-      </div>
+      <app-skills-listar *ngIf="modifica"></app-skills-listar>
     </div>
   </div>
 </section>

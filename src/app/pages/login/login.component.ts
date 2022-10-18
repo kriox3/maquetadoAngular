@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       this.tokenService.setAuthorities(data.authorities);
       this.roles = data.authorities;
       let suc = alert("Acceso Correcto. Redireccionando");
-      this.router.navigate(['/portfolio']);
+      this.router.navigate(['/inicio']);
     }, err => {
       this.isLogged = false;
       this.isLogginFail = true;

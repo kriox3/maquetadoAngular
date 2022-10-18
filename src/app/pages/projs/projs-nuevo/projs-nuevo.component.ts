@@ -21,7 +21,6 @@ export class ProjsNuevoComponent implements OnInit {
   proyectoNewModalOn = false;
 
   constructor(private proyectoService: ProyectoService,
-    private certComp: ProjsListarComponent,
     private router: Router,
     private proyectoComponente: ProjsComponent) { }
 

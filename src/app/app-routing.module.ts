@@ -9,9 +9,11 @@ import { CertsComponent } from './pages/certs/certs.component';
 import { SkillsComponent } from './pages/skills/skills.component';
 import { ExpComponent } from './pages/exp/exp.component';
 import { ProjsComponent } from './pages/projs/projs.component';
+import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   { path: 'portfolio', component: PortfolioComponent, canActivate:[GuardGuard] },
+  { path: 'inicio', component: AboutComponent, canActivate:[GuardGuard] },
   { path: 'educacion', component: EducacionComponent, canActivate:[GuardGuard] },
   { path: 'certificaciones', component: CertsComponent, canActivate:[GuardGuard] },
   { path: 'habilidades', component: SkillsComponent, canActivate:[GuardGuard] },

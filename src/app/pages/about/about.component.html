@@ -8,20 +8,20 @@
             <tr>
               <td rowspan="3">
                 <img
-                  [src]="paso.foto_persona"
+                  [src]="elPortfolio.foto_persona"
                   class="circulo">
               </td>
-              <td class="izquierda"><i class='bx bxl-xing'></i> {{paso.apellido_persona}}, {{paso.nombre_persona}}</td>
+              <td class="izquierda"><i class='bx bxl-xing'></i> {{elPortfolio.apellido_persona}}, {{elPortfolio.nombre_persona}}</td>
             </tr>
             <tr>
-              <td class="izquierda"><i class='bx bx-hard-hat'></i> {{paso.cargo_persona}} en {{paso.oficina_persona}}</td>
+              <td class="izquierda"><i class='bx bx-hard-hat'></i> {{elPortfolio.cargo_persona}} en {{elPortfolio.oficina_persona}}</td>
             </tr>
             <tr>
-              <td class="izquierda"><i class='bx bx-current-location'></i> {{paso.localidad_persona}}</td>
+              <td class="izquierda"><i class='bx bx-current-location'></i> {{elPortfolio.localidad_persona}}</td>
             </tr>
             <tr class="pt-2">
               <td colspan="4">
-                  <p style="font-size: 1rem;">{{paso.info_persona}}</p>
+                  <p style="font-size: 1rem;">{{elPortfolio.info_persona}}</p>
               </td>
             </tr>
           </tbody>
@@ -32,3 +32,5 @@
     </div>
   </div>
 </section>
+
+<app-portfolio></app-portfolio>
