@@ -14,8 +14,7 @@ export class EducacionComponent implements OnInit {
   modifica= false;
   isLogged = false;
 
-  constructor(private datosPortfolio: PortfolioService,
-    private educacionService: EducacionService,
+  constructor(private educacionService: EducacionService,
     private tokenService: TokenService) { }
 
   ngOnInit(): void {

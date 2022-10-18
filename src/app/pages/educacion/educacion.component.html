@@ -22,7 +22,6 @@
               <td>{{dato.establecimiento}}</td>
               <td>{{dato.titulo}}</td>
               <td>
-                <!-- {{dato.fecha}} -->
                 <input type="date" disabled class="text-center text-light" style="background: transparent; border: none" placeholder="dd/mm/yyyy" value="{{dato.fecha}}">
               </td>
               <td *ngIf="dato.completado; else elseBlock">Si</td>

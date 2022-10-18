@@ -28,6 +28,8 @@ import { ContactoListarComponent } from './pages/contacto/contacto-listar/contac
 import { ContactoNuevoComponent } from './pages/contacto/contacto-nuevo/contacto-nuevo.component';
 import { EducacionListarComponent } from './pages/educacion/educacion-listar/educacion-listar.component';
 import { EducacionNuevoComponent } from './pages/educacion/educacion-nuevo/educacion-nuevo.component';
+import { CertsListarComponent } from './pages/certs/certs-listar/certs-listar.component';
+import { CertsNuevoComponent } from './pages/certs/certs-nuevo/certs-nuevo.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { EducacionNuevoComponent } from './pages/educacion/educacion-nuevo/educa
     ContactoListarComponent,
     ContactoNuevoComponent,
     EducacionListarComponent,
-    EducacionNuevoComponent
+    EducacionNuevoComponent,
+    CertsListarComponent,
+    CertsNuevoComponent
   ],
   imports: [
     BrowserModule,

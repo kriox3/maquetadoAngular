@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/serv/portfolio.service';
+import { Certificacion } from 'src/app/models/certificacion';
+import { CertificacionService } from 'src/app/serv/certificacion.service';
+import { TokenService } from 'src/app/serv/token.service';
 
 @Component({
   selector: 'app-certs',
@@ -7,11 +9,35 @@ import { PortfolioService } from 'src/app/serv/portfolio.service';
   styleUrls: ['./certs.component.css']
 })
 export class CertsComponent implements OnInit {
-  @Input() certificaciones: any;
-  @Input() modifica: any;
 
-  constructor(private datosPortfolio:PortfolioService) { }
+  listaCerts: Certificacion[] = [];
+  modifica = false;
+  isLogged = false;
 
-  ngOnInit(): void {}
+  constructor(private certificacionService: CertificacionService,
+    private tokenService: TokenService) { }
+
+  ngOnInit(): void {
+    this.cargarCerts();
+
+    if (this.tokenService.getAuthorities().includes('ROLE_ADMIN')) {
+      this.modifica = true;
+    }
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+  }
+
+  public cargarCerts(): void {
+    this.certificacionService.getCertificacion().subscribe(data => {
+      this.listaCerts = data;
+    })
+  }
+
+  reloadME(): void {
+    window.location.reload();
+  }
 
 }
