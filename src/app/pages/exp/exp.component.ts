@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PortfolioService } from 'src/app/serv/portfolio.service';
+import { Experiencia } from 'src/app/models/experiencia';
+import { ExperienciaService } from 'src/app/serv/experiencia.service';
+import { TokenService } from 'src/app/serv/token.service';
 
 @Component({
   selector: 'app-exp',
@@ -7,10 +9,35 @@ import { PortfolioService } from 'src/app/serv/portfolio.service';
   styleUrls: ['./exp.component.css']
 })
 export class ExpComponent implements OnInit {
-  @Input() experiencia: any;
-  @Input() modifica: any;
 
-  constructor(private datosPortfolio:PortfolioService) { }
+  listaExp: Experiencia[] = [];
+  modifica = false;
+  isLogged = false;
 
-  ngOnInit(): void {}
+  constructor(private expService: ExperienciaService,
+    private tokenService: TokenService) { }
+
+  ngOnInit(): void {
+    this.cargarExp();
+
+    if (this.tokenService.getAuthorities().includes('ROLE_ADMIN')) {
+      this.modifica = true;
+    }
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+  }
+
+  public cargarExp(): void {
+    this.expService.getExperiencia().subscribe(data => {
+      this.listaExp = data;
+    })
+  }
+
+  reloadME(): void {
+    window.location.reload();
+  }
+
 }

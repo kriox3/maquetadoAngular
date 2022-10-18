@@ -18,13 +18,13 @@ export class CertificacionService {
   }
 
   //para agregar una
-  public addCertificacion(educacion: Certificacion): Observable<any> {
-    return this.http.post<any>(this.URL + 'crear', educacion);
+  public addCertificacion(certificacion: Certificacion): Observable<any> {
+    return this.http.post<any>(this.URL + 'crear', certificacion);
   }
 
   //para actualizar una
-  public updateCertificacion(id: number, educacion: Certificacion): Observable<any> {
-    return this.http.put<any>(this.URL + `editar/${id}?id=${id}&establecimiento=${educacion.establecimiento}&titulo=${educacion.titulo}&fecha=${educacion.fecha}&completado=${educacion.completado}`, educacion);
+  public updateCertificacion(id: number, certificacion: Certificacion): Observable<any> {
+    return this.http.put<any>(this.URL + `editar/${id}?id=${id}&establecimiento=${certificacion.establecimiento}&titulo=${certificacion.titulo}&fecha=${certificacion.fecha}&completado=${certificacion.completado}`, certificacion);
   }
 
   //para borrar una

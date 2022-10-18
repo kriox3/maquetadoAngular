@@ -30,6 +30,8 @@ import { EducacionListarComponent } from './pages/educacion/educacion-listar/edu
 import { EducacionNuevoComponent } from './pages/educacion/educacion-nuevo/educacion-nuevo.component';
 import { CertsListarComponent } from './pages/certs/certs-listar/certs-listar.component';
 import { CertsNuevoComponent } from './pages/certs/certs-nuevo/certs-nuevo.component';
+import { ExpListarComponent } from './pages/exp/exp-listar/exp-listar.component';
+import { ExpNuevoComponent } from './pages/exp/exp-nuevo/exp-nuevo.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { CertsNuevoComponent } from './pages/certs/certs-nuevo/certs-nuevo.compo
     EducacionListarComponent,
     EducacionNuevoComponent,
     CertsListarComponent,
-    CertsNuevoComponent
+    CertsNuevoComponent,
+    ExpListarComponent,
+    ExpNuevoComponent
   ],
   imports: [
     BrowserModule,

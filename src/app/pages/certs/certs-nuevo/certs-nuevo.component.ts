@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Certificacion } from 'src/app/models/certificacion';
 import { CertificacionService } from 'src/app/serv/certificacion.service';
-import { PortfolioComponent } from '../../portfolio/portfolio.component';
 import { CertsListarComponent } from '../certs-listar/certs-listar.component';
 import { CertsComponent } from '../certs.component';
 
