@@ -11,7 +11,8 @@ export class AppComponent implements OnInit {
   isLogin = false;
   roles!: string[];
   authority!: string;
-  constructor(private tokenService: TokenService, private router: Router) { }
+  esLogin = false;
+  constructor(private tokenService: TokenService, public router: Router) { }
 
   ngOnInit() {
     if (this.tokenService.getToken()) {
@@ -33,7 +34,7 @@ export class AppComponent implements OnInit {
     this.tokenService.logout();
     this.isLogin = false;
     this.authority = '';
-    this.router.navigate(['home']);
+    this.router.navigate(['login']);
   }
 
 }

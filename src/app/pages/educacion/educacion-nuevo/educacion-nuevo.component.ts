@@ -24,7 +24,6 @@ export class EducacionNuevoComponent implements OnInit {
   constructor(private educacionService: EducacionService,
     private educComp: EducacionListarComponent,
     private router: Router,
-    private portfolio: PortfolioComponent,
     private educacionComponente: EducacionComponent) { }
 
   ngOnInit(): void {

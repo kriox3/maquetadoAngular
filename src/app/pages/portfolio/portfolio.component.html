@@ -1,15 +1,7 @@
-<app-header [paso]="elPortfolio.apellido_persona +' '+ elPortfolio.nombre_persona"></app-header>
-<app-botonera></app-botonera>
-
 <app-about [paso]="elPortfolio" [modifica]="isLoggedAdmin"></app-about>
+<app-contacto [redes]="elPortfolio.redes" [modifica]="isLoggedAdmin"></app-contacto>
 
-<app-educacion [educacion]="elPortfolio.educaciones" [modifica]="isLoggedAdmin"></app-educacion>
 <app-certs [certificaciones]="elPortfolio.certificaciones" [modifica]="isLoggedAdmin"></app-certs>
 <app-skills [habilidades]="elPortfolio.habilidades" [modifica]="isLoggedAdmin"></app-skills>
 <app-exp [experiencia]="elPortfolio.experiencias" [modifica]="isLoggedAdmin"></app-exp>
 <app-projs [proyectos]="elPortfolio.proyectos" [modifica]="isLoggedAdmin"></app-projs>
-<app-contacto [redes]="elPortfolio.redes" [modifica]="isLoggedAdmin"></app-contacto>
-
-<app-footer></app-footer>
-
-<app-fondo></app-fondo>

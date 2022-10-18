@@ -25,13 +25,13 @@
                     <div class="mt-2 mb-4 text-white bg-dark rounded-3">
                         <div class="container-fluid py-5">
                             <div class="accordion" id="accordionExample"
-                                *ngFor="let educacion of educacionLista; let i= index">
+                                *ngFor="let educaciones of educacionLista; let i= index">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" [id]="'heading'+i+1">
                                         <button class="accordion-button collapsed text-light" type="button"
                                             data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse'+i+1"
                                             aria-expanded="false" [attr.aria-controls]="'collapse'+i+1">
-                                            <b>{{educacion.establecimiento}}</b>: {{educacion.titulo}}
+                                            <b>{{educaciones.establecimiento}}</b>: {{educaciones.titulo}}
                                         </button>
                                     </h2>
                                     <div [id]="'collapse'+i+1" class="accordion-collapse collapse "
@@ -39,7 +39,8 @@
                                         <div class="accordion-body">
                                             <div class="accordion-body editDelete my-0">
 
-                                                <div class="accordion-body editDelete buttons my-0 centrarlo" style=" display: flex;">
+                                                <div class="accordion-body editDelete buttons my-0 centrarlo"
+                                                    style=" display: flex;">
 
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn botonito"
@@ -52,7 +53,7 @@
                                                         Editar
                                                     </button>
 
-                                                    <form (ngSubmit)="onDeleteEducacion(educacion.id)" novalidate
+                                                    <form (ngSubmit)="onDeleteEducacion(educaciones.id)" novalidate
                                                         #f="ngForm" *ngIf="!educacionModalOn">
                                                         <button type="submit" class="btn botonito"
                                                             style="filter: hue-rotate(110deg)" [disabled]="!f.valid">
@@ -81,7 +82,7 @@
                                                             <div class="modal-body">
                                                                 <div class="container">
 
-                                                                    <form (ngSubmit)="onUpdateEdu(educacion.id)"
+                                                                    <form (ngSubmit)="onUpdateEdu(educaciones.id)"
                                                                         novalidate #f="ngForm">
 
                                                                         <div class="form-group">
@@ -90,7 +91,7 @@
                                                                             <input type="text" class="form-control"
                                                                                 id="establecimiento"
                                                                                 name="establecimiento"
-                                                                                [(ngModel)]="educacion.establecimiento"
+                                                                                [(ngModel)]="educaciones.establecimiento"
                                                                                 required>
                                                                         </div>
 
@@ -98,25 +99,29 @@
                                                                             <label for="titulo">Titulo</label>
                                                                             <input type="text" class="form-control"
                                                                                 id="titulo" name="titulo"
-                                                                                [(ngModel)]="educacion.titulo" required>
+                                                                                [(ngModel)]="educaciones.titulo" required>
                                                                         </div>
 
                                                                         <div class="form-group">
                                                                             <label for="fecha">Fecha</label>
-                                                                            <input type="date" placeholder="dd/mm/yyyy" class="form-control"
-                                                                                id="fecha" name="fecha"
-                                                                                [(ngModel)]="educacion.fecha" required>
+                                                                            <input type="date" placeholder="dd/mm/yyyy"
+                                                                                class="form-control" id="fecha"
+                                                                                name="fecha"
+                                                                                [(ngModel)]="educaciones.fecha" required>
                                                                         </div>
 
-                                                                        <div class="form-group">
-                                                                            <label for="completado">Finalizado</label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="completado" name="completado"
-                                                                                [(ngModel)]="educacion.completado"
-                                                                                required>
+                                                                        <div class="form-check form-switch">
+                                                                            <input class="form-check-input"
+                                                                                type="checkbox" id="completado"
+                                                                                name="completado"
+                                                                                [(ngModel)]="educaciones.completado">
+                                                                            <label class="form-check-label"
+                                                                                for="completado">Finalizado</label>
                                                                         </div>
 
-                                                                        <button type="submit" class="btn botonito centrarlo my-2" style="display: flex; margin:auto; filter: hue-rotate(0deg);"
+                                                                        <button type="submit"
+                                                                            class="btn botonito centrarlo my-2"
+                                                                            style="display: flex; margin:auto; filter: hue-rotate(0deg);"
                                                                             [disabled]="!f.valid">Guardar
                                                                         </button>
                                                                     </form>

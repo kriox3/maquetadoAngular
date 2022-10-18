@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Educacion } from 'src/app/models/educacion';
 import { EducacionService } from 'src/app/serv/educacion.service';
 import { TokenService } from 'src/app/serv/token.service';
-import { PortfolioComponent } from '../../portfolio/portfolio.component';
+import { EducacionComponent } from '../educacion.component';
 
 @Component({
   selector: 'app-educacion-listar',
@@ -24,7 +24,7 @@ export class EducacionListarComponent implements OnInit {
   constructor(private educacionService: EducacionService,
     private tokenService: TokenService,
     private router: Router,
-    private portfolio: PortfolioComponent) { }
+    private educacionComponente: EducacionComponent) { }
 
   isLogged = false;
   educacionModalOn = false;
@@ -51,7 +51,7 @@ export class EducacionListarComponent implements OnInit {
       this.educacionService.deleteEducacion(id)
         .subscribe(data => { }, err => {
           let er = alert(JSON.stringify(err.error.text));
-          this.portfolio.reloadME();
+          this.educacionComponente.reloadME();
 
         }
         );
@@ -66,7 +66,7 @@ export class EducacionListarComponent implements OnInit {
         data => {
           this.cargarEducacion();
           let a = alert("Modificada la educacion");
-          this.portfolio.reloadME();
+          this.educacionComponente.reloadME();
         }
       )
     }
