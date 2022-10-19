@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { Certificacion } from 'src/app/models/certificacion';
 import { CertificacionService } from 'src/app/serv/certificacion.service';
 import { TokenService } from 'src/app/serv/token.service';
@@ -15,10 +16,12 @@ export class CertsComponent implements OnInit {
   isLogged = false;
 
   constructor(private certificacionService: CertificacionService,
-    private tokenService: TokenService) { }
+    private tokenService: TokenService,
+    private app: AppComponent) { }
 
   ngOnInit(): void {
     this.cargarCerts();
+    this.app.domSpinner(false);
 
     if (this.tokenService.getAuthorities().includes('ROLE_ADMIN')) {
       this.modifica = true;

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Educacion } from 'src/app/models/educacion';
 import { EducacionService } from 'src/app/serv/educacion.service';
-import { PortfolioComponent } from '../../portfolio/portfolio.component';
 import { EducacionListarComponent } from '../educacion-listar/educacion-listar.component';
 import { EducacionComponent } from '../educacion.component';
 
@@ -24,19 +24,21 @@ export class EducacionNuevoComponent implements OnInit {
   constructor(private educacionService: EducacionService,
     private educComp: EducacionListarComponent,
     private router: Router,
-    private educacionComponente: EducacionComponent) { }
+    private educacionComponente: EducacionComponent, 
+    private app: AppComponent) { }
 
   ngOnInit(): void {
   }
 
   onCreate(): void {
+    this.app.domSpinner(true);
     const cont = new Educacion(this.establecimiento, this.titulo, this.fecha, this.completado, this.id);
     this.educacionService.addEducacion(cont).subscribe(data=>{
 
     }, err =>{
       let er = alert(JSON.stringify(err.error.text));
       this.educacionComponente.reloadME();
-            
+      this.app.domSpinner(false);
     }
     )
   }

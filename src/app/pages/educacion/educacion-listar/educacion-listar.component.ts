@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Educacion } from 'src/app/models/educacion';
 import { EducacionService } from 'src/app/serv/educacion.service';
 import { TokenService } from 'src/app/serv/token.service';
@@ -24,7 +25,8 @@ export class EducacionListarComponent implements OnInit {
   constructor(private educacionService: EducacionService,
     private tokenService: TokenService,
     private router: Router,
-    private educacionComponente: EducacionComponent) { }
+    private educacionComponente: EducacionComponent, 
+    private app: AppComponent) { }
 
   isLogged = false;
   educacionModalOn = false;
@@ -46,19 +48,21 @@ export class EducacionListarComponent implements OnInit {
   }
 
   onDeleteEducacion(id?: number) {
+    this.app.domSpinner(true);
     console.log(id);
     if (id != undefined) {
       this.educacionService.deleteEducacion(id)
         .subscribe(data => { }, err => {
           let er = alert(JSON.stringify(err.error.text));
           this.educacionComponente.reloadME();
-
+          this.app.domSpinner(false);
         }
         );
     }
   }
 
   onUpdateEdu(id?: number) {
+    this.app.domSpinner(true);
     let cont = this.educacionLista.find(x => x.id == id);
     /* const cont = new Educacion(this.accesoUrl, this.persona, this.red, this.id); */
     if (id != undefined && cont != undefined) {
@@ -67,6 +71,7 @@ export class EducacionListarComponent implements OnInit {
           this.cargarEducacion();
           let a = alert("Modificada la educacion");
           this.educacionComponente.reloadME();
+          this.app.domSpinner(false);
         }
       )
     }

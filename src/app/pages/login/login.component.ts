@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 // importamos las librerias de formulario que vamos a necesitar
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { LoginUsuario } from 'src/app/models/login-usuario';
 import { AuthService } from 'src/app/serv/auth.service';
 import { TokenService } from 'src/app/serv/token.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   // Inyectar en el constructor el formBuilder
-  constructor(private formBuilder: FormBuilder, private tokenService: TokenService, private authService: AuthService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private tokenService: TokenService, private authService: AuthService, private router: Router, private app: AppComponent) {
     ///Creamos el grupo de controles para el formulario de login
     this.form = this.formBuilder.group({
       password: ['', [Validators.required, Validators.minLength(4)]],
@@ -36,10 +38,15 @@ export class LoginComponent implements OnInit {
       this.isLogged = true;
       this.isLogginFail = false;
       this.roles = this.tokenService.getAuthorities();
-    }
+      }
+      if (this.isLogged)
+      {
+        this.router.navigate(['/inicio']);
+      }
   }
 
   onLogin(): void {
+    this.app.domSpinner(true);
     this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
     this.authService.login(this.loginUsuario).subscribe(data => {
       this.isLogged = true;
@@ -50,12 +57,22 @@ export class LoginComponent implements OnInit {
       this.roles = data.authorities;
       let suc = alert("Acceso Correcto. Redireccionando");
       this.router.navigate(['/inicio']);
+      this.app.domSpinner(false);
     }, err => {
       this.isLogged = false;
       this.isLogginFail = true;
       let er = alert("Acceso Incorrecto");
-
+      this.app.domSpinner(false);
     })
+  }
+
+  onSecret(): void{
+    let secret = prompt("Salto y seña:", '');
+    if(secret === environment.secret){
+      this.router.navigate(['/simon']);
+    }else{
+      alert("Simon dice: muere");
+    }
   }
 
   get Password() {

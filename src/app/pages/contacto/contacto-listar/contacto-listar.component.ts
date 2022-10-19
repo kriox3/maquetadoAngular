@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { AboutMe } from 'src/app/models/about-me';
 import { Contacto } from 'src/app/models/contacto';
 import { Red } from 'src/app/models/red';
 import { ContactoService } from 'src/app/serv/contacto.service';
 import { RedService } from 'src/app/serv/red.service';
 import { TokenService } from 'src/app/serv/token.service';
-import { PortfolioComponent } from '../../portfolio/portfolio.component';
+import { ContactoComponent } from '../contacto.component';
 
 @Component({
   selector: 'app-contacto-listar',
@@ -15,9 +16,10 @@ import { PortfolioComponent } from '../../portfolio/portfolio.component';
 })
 export class ContactoListarComponent implements OnInit {
 
+  modifica = false;
   id?: number;
   accesoUrl: string = '';
-  persona: AboutMe = new AboutMe("","","","","",0);
+  persona: AboutMe = new AboutMe("", "", "", "", "", 0);
   red: Red = new Red("", 1);
 
   contacto: Contacto = new Contacto("", this.persona, this.red, 0);
@@ -28,7 +30,8 @@ export class ContactoListarComponent implements OnInit {
     private redService: RedService,
     private tokenService: TokenService,
     private router: Router,
-    private portfolio: PortfolioComponent) { }
+    private contactoComponente: ContactoComponent, 
+    private app: AppComponent) { }
 
   isLogged = false;
   modalOn = false;
@@ -36,6 +39,9 @@ export class ContactoListarComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarContacto();
+    if (this.tokenService.getAuthorities().includes('ROLE_ADMIN')) {
+      this.modifica = true;
+    }
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     } else {
@@ -57,19 +63,21 @@ export class ContactoListarComponent implements OnInit {
   }
 
   onDeleteContacto(id?: number) {
+    this.app.domSpinner(true);
     console.log(id);
     if (id != undefined) {
       this.contactoService.deleteContacto(id)
         .subscribe(data => { }, err => {
           let er = alert(JSON.stringify(err.error.text));
-          this.portfolio.reloadME();
-
+          this.contactoComponente.reloadME();
+          this.app.domSpinner(false);
         }
         );
     }
   }
 
   onUpdateCon(id?: number) {
+    this.app.domSpinner(true);
     let cont = this.contactoLista.find(x => x.id == id);
     /* const cont = new Contacto(this.accesoUrl, this.persona, this.red, this.id); */
     if (id != undefined && cont != undefined) {
@@ -77,7 +85,8 @@ export class ContactoListarComponent implements OnInit {
         data => {
           this.cargarContacto();
           let a = alert("Modificada la red");
-          this.portfolio.reloadME();
+          this.contactoComponente.reloadME();
+          this.app.domSpinner(false);
         }
       )
     }

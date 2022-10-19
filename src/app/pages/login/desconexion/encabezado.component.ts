@@ -28,8 +28,4 @@ export class EncabezadoComponent implements OnInit {
     this.tokenService.logout();
   }
 
-  login(){
-    this.router.navigate(['/login'])
-  }
-
 }

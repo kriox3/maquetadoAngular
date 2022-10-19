@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>maquetadoAngular</title>
+	<title>mi Portfolio ~ Argentina Programa</title>
 	<base href="/">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,8 +13,23 @@
 		integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
 </head>
 
-<body class="area fondo-oscuro"> <!-- onload="showInicio()"> -->
+<body class="area fondo-oscuro">
 	<app-root></app-root>
+
+	<div class="lds-spinner" id="loading" style="display: none">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
 </body>
 
 </html>
@@ -24,6 +39,18 @@
 	crossorigin="anonymous"></script>
 
 <script>
+
+	function loadThem(queCosa) {
+		var x = document.getElementById("loading");
+		if (queCosa) {
+			x.style.display = "block";
+			console.log('encendiendo');
+		} else {
+			x.style.display = "none";
+			console.log('apagando');
+		}
+	}
+
 	$("#myModal").on("shown.bs.modal", function () {
 		$("#myInput").trigger("focus");
 	});

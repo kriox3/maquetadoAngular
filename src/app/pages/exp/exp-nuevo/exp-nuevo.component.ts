@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Experiencia } from 'src/app/models/experiencia';
 import { ExperienciaService } from 'src/app/serv/experiencia.service';
 import { ExpListarComponent } from '../exp-listar/exp-listar.component';
@@ -24,19 +25,21 @@ export class ExpNuevoComponent implements OnInit {
   constructor(private experienciaService: ExperienciaService,
     private certComp: ExpListarComponent,
     private router: Router,
-    private experienciaComponente: ExpComponent) { }
+    private experienciaComponente: ExpComponent, 
+    private app: AppComponent) { }
 
   ngOnInit(): void {
   }
 
   onCreate(): void {
+    this.app.domSpinner(true);
     const cont = new Experiencia(this.establecimiento, this.ocupacion, this.desde, this.hasta, this.actual, this.id);
     this.experienciaService.addExperiencia(cont).subscribe(data => {
 
     }, err => {
       let er = alert(JSON.stringify(err.error.text));
       this.experienciaComponente.reloadME();
-
+      this.app.domSpinner(false);
     }
     )
   }

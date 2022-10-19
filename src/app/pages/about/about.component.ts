@@ -3,6 +3,7 @@ import { PortfolioService } from 'src/app/serv/portfolio.service';
 import { AboutMeService } from 'src/app/serv/aboutme.service';
 import { AboutMe } from 'src/app/models/about-me';
 import { TokenService } from 'src/app/serv/token.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-about',
@@ -20,10 +21,12 @@ export class AboutComponent implements OnInit {
 
   constructor(private datosPortfolio: PortfolioService,
     private aboutMeService: AboutMeService,
-    private tokenService: TokenService) { }
+    private tokenService: TokenService,
+    private app: AppComponent) { }
 
   ngOnInit(): void {
     this.cargarPortfolio();
+    this.app.domSpinner(false);
 
     if (this.tokenService.getAuthorities().includes('ROLE_ADMIN')) {
       this.modifica = true;

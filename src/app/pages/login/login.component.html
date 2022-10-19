@@ -1,11 +1,10 @@
-
 <div class="container centrarlo" style="height: 100%; width:100%;" id="iniciarSesion" tabindex="-1" role="dialog"
   aria-labelledby="iniciarSesionLabel">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content" style="background-color: #404040; color: white">
       <div class="modal-body">
         <form [formGroup]="form" (ngSubmit)="onLogin()" #f="ngForm" novalidate>
-          <img src="/assets/img/APlogo.png" alt="" width="200" />
+          <img src="/assets/img/APlogo.png" alt="" width="200" (click)="onSecret()"/>
           <div class="form-floating">
             <input type="email" formControlName="email" class="form-control" id="floatingInput"
               [(ngModel)]="nombreUsuario" required placeholder="name@example.com">

@@ -11,30 +11,31 @@ import { AboutComponent } from '../about.component';
   styleUrls: ['./about-edit.component.css']
 })
 export class AboutEditComponent implements OnInit {
-  
+
 
   isLogged = false;
- /*  aboutMe: AboutMe = new AboutMe(); */
-  aboutMe: AboutMe = new AboutMe("","","","","",0);
+  /*  aboutMe: AboutMe = new AboutMe(); */
+  aboutMe: AboutMe = new AboutMe("", "", "", "", "", 0);
 
   constructor(
     private aboutMeService: AboutMeService,
     private router: Router,
     private appComp: AppComponent,
-    private aboutMeComp: AboutComponent
-  ) { }
+    private aboutMeComp: AboutComponent, 
+    private app: AppComponent) { }
 
   ngOnInit(): void {
     this.cargarDatos();
   }
 
-  cargarDatos(){
+  cargarDatos() {
     this.aboutMeService.ver().subscribe(data => {
       this.aboutMe = data;
     })
   }
 
   onUpdate(): void {
+    this.app.domSpinner(true);
     this.aboutMeService.update(this.aboutMe).subscribe(
       data => {
         this.aboutMeComp.cargarAboutMe();
@@ -45,9 +46,12 @@ export class AboutEditComponent implements OnInit {
           let b = alert("No se pudo modificar la información");
           if (b != null) {
             window.location.reload();
-          }}
-          window.location.reload();
+            this.app.domSpinner(false);
+          }
         }
+        window.location.reload();
+        this.app.domSpinner(false);
+      }
     )
   }
 }

@@ -1,0 +1,37 @@
+<section style="display: block" id="educacion">
+    <div class="container alert" style="background-color: #ffffff1e; border-radius: 20px" role="alert">
+      <div class="row vh-md-100">
+        <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center" id="cuerpo">
+          <h1 class="heading-black text-light">
+            Usuarios
+          </h1>
+  
+          <table class="table table table-hover text-light">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Contraseña</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dato of listaSimon; let i= index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{dato.nombre}}</td>
+                <td>{{dato.email}}</td>
+                <td>{{dato.nombre_usuario}}</td>
+                <td>{{dato.password}}</td>
+              </tr>
+            </tbody>
+          </table>
+  
+        </div>
+  
+        <!-- <app-educacion-listar *ngIf="modifica"></app-educacion-listar> -->
+  
+      </div>
+    </div>
+  </section>
+  

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { MenuUserComponent } from './pages/menu-user/menu-user.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { BotoneraComponent } from './pages/botonera/botonera.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -17,10 +16,9 @@ import { FondoComponent } from './pages/fondo/fondo.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
-import { EncabezadoComponent } from './pages/encabezado/encabezado.component';
+import { EncabezadoComponent } from './pages/login/desconexion/encabezado.component';
 import { InterceptorService } from './serv/interceptor-service';
 import { PortfolioService } from './serv/portfolio.service';
 import { AboutEditComponent } from './pages/about/about-edit/about-edit.component';
@@ -36,11 +34,11 @@ import { ProjsListarComponent } from './pages/projs/projs-listar/projs-listar.co
 import { ProjsNuevoComponent } from './pages/projs/projs-nuevo/projs-nuevo.component';
 import { SkillsListarComponent } from './pages/skills/skills-listar/skills-listar.component';
 import { SkillsNuevoComponent } from './pages/skills/skills-nuevo/skills-nuevo.component';
+import { SimonComponent } from './pages/login/simon/simon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuUserComponent,
     HeaderComponent,
     BotoneraComponent,
     AboutComponent,
@@ -52,7 +50,6 @@ import { SkillsNuevoComponent } from './pages/skills/skills-nuevo/skills-nuevo.c
     ContactoComponent,
     FooterComponent,
     FondoComponent,
-    PortfolioComponent,
     LoginComponent,
     EncabezadoComponent,
     AboutEditComponent,
@@ -67,7 +64,8 @@ import { SkillsNuevoComponent } from './pages/skills/skills-nuevo/skills-nuevo.c
     ProjsListarComponent,
     ProjsNuevoComponent,
     SkillsListarComponent,
-    SkillsNuevoComponent
+    SkillsNuevoComponent,
+    SimonComponent
   ],
   imports: [
     BrowserModule,

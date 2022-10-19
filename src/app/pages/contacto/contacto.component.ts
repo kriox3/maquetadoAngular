@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Contacto } from 'src/app/models/contacto';
+import { ContactoService } from 'src/app/serv/contacto.service';
 import { PortfolioService } from 'src/app/serv/portfolio.service';
+import { TokenService } from 'src/app/serv/token.service';
 
 @Component({
   selector: 'app-contacto',
@@ -7,8 +10,9 @@ import { PortfolioService } from 'src/app/serv/portfolio.service';
   styleUrls: ['./contacto.component.css']
 })
 export class ContactoComponent implements OnInit {
-  @Input() redes: any;
-  @Input() modifica: any;
+  listaContacto: Contacto[] = [];
+  modifica = false;
+  isLogged = false;
 
   getRed(red: any) {
     switch (red) {
@@ -35,9 +39,29 @@ export class ContactoComponent implements OnInit {
     }
   }
 
-  constructor(private datosPortfolio: PortfolioService) { }
+  constructor(private datosPortfolio: PortfolioService,
+    private tokenService: TokenService,
+    private contactoService: ContactoService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.cargarContacto();
+
+    if (this.tokenService.getAuthorities().includes('ROLE_ADMIN')) {
+      this.modifica = true;
+    }
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+  }
+
+  public cargarContacto(): void {
+    this.contactoService.getContacto().subscribe(data => {
+      this.listaContacto = data;
+    })
+  }
+
 
   onNavigate(web: any) {
     window.open(web, "_blank");

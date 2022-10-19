@@ -37,4 +37,17 @@ export class AppComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+  domSpinner(queCosa: boolean): void {
+    const x = document.getElementById('loading');
+    if (x) {
+      if (queCosa) {
+        x.style.display = 'block';
+        console.log('encendiendo');
+      } else {
+        x.style.display = "none";
+        console.log('apagando');
+      }
+    }
+  }
+
 }

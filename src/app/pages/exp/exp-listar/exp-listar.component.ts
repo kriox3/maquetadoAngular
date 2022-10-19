@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Experiencia } from 'src/app/models/experiencia';
 import { ExperienciaService } from 'src/app/serv/experiencia.service';
 import { TokenService } from 'src/app/serv/token.service';
@@ -25,7 +26,8 @@ export class ExpListarComponent implements OnInit {
   constructor(private experienciaService: ExperienciaService,
     private tokenService: TokenService,
     private router: Router,
-    private expComponente: ExpComponent) { }
+    private expComponente: ExpComponent, 
+    private app: AppComponent) { }
 
   isLogged = false;
   experienciaModalOn = false;
@@ -47,19 +49,21 @@ export class ExpListarComponent implements OnInit {
   }
 
   onDeleteExperiencia(id?: number) {
+    this.app.domSpinner(true);
     console.log(id);
     if (id != undefined) {
       this.experienciaService.deleteExperiencia(id)
         .subscribe(data => { }, err => {
           let er = alert(JSON.stringify(err.error.text));
           this.expComponente.reloadME();
-
+          this.app.domSpinner(false);
         }
         );
     }
   }
 
   onUpdateCert(id?: number) {
+    this.app.domSpinner(true);
     let cont = this.experienciaLista.find(x => x.id == id);
     /* const cont = new Experiencia(this.accesoUrl, this.persona, this.red, this.id); */
     if (id != undefined && cont != undefined) {
@@ -68,6 +72,7 @@ export class ExpListarComponent implements OnInit {
           this.cargarExperiencia();
           let a = alert("Modificada la experiencia");
           this.expComponente.reloadME();
+          this.app.domSpinner(false);
         }
       )
     }

@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { AboutMe } from 'src/app/models/about-me';
 import { Contacto } from 'src/app/models/contacto';
 import { Red } from 'src/app/models/red';
 import { ContactoService } from 'src/app/serv/contacto.service';
-import { PortfolioComponent } from '../../portfolio/portfolio.component';
 import { ContactoListarComponent } from '../contacto-listar/contacto-listar.component';
 import { ContactoComponent } from '../contacto.component';
 
@@ -27,20 +27,21 @@ export class ContactoNuevoComponent implements OnInit {
   constructor(private contactoService: ContactoService,
     private contComp: ContactoListarComponent,
     private router: Router,
-    private portfolio: PortfolioComponent,
-    private contactoComponente: ContactoComponent) { }
+    private contactoComponente: ContactoComponent, 
+    private app: AppComponent) { }
 
   ngOnInit(): void {
   }
 
   onCreate(): void {
+    this.app.domSpinner(true);
     const cont = new Contacto(this.accesoUrl, this.persona, this.red, this.id);
     this.contactoService.addContacto(cont).subscribe(data=>{
 
     }, err =>{
       let er = alert(JSON.stringify(err.error.text));
       this.contactoComponente.reloadME();
-            
+      this.app.domSpinner(false);
     }
     )
   }

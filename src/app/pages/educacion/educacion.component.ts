@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 import { Educacion } from 'src/app/models/educacion';
 import { EducacionService } from 'src/app/serv/educacion.service';
 import { PortfolioService } from 'src/app/serv/portfolio.service';
@@ -15,10 +16,12 @@ export class EducacionComponent implements OnInit {
   isLogged = false;
 
   constructor(private educacionService: EducacionService,
-    private tokenService: TokenService) { }
+    private tokenService: TokenService,
+    private app: AppComponent) { }
 
   ngOnInit(): void {
     this.cargarEducacion();
+    this.app.domSpinner(false);
 
     if (this.tokenService.getAuthorities().includes('ROLE_ADMIN')){
       this.modifica = true;

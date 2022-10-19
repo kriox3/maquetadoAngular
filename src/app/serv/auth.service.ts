@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { JwtDto } from '../models/jwt-dto';
 import { LoginUsuario } from '../models/login-usuario';
 import { NuevoUsuario } from '../models/nuevo-usuario';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,14 @@ export class AuthService {
 
   public login(loginUsuario: LoginUsuario): Observable<JwtDto> {
     return this.httpClient.post<JwtDto>(this.authURL + 'login', loginUsuario)
+  }
+
+  public deleteUser(id: number): Observable<any> {
+    return this.httpClient.delete<any>(this.authURL + `borrar/${id}`);
+  }
+
+  public getUsers(): Observable<Usuario[]> {
+    return this.httpClient.get<Usuario[]>(this.authURL + 'traer');
   }
 
   get UsuarioAutenticado(){

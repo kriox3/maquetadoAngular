@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Proyecto } from 'src/app/models/proyecto';
 import { ProyectoService } from 'src/app/serv/proyecto.service';
 import { TokenService } from 'src/app/serv/token.service';
@@ -24,7 +25,8 @@ export class ProjsListarComponent implements OnInit {
   constructor(private proyectoService: ProyectoService,
     private tokenService: TokenService,
     private router: Router,
-    private projsComponente: ProjsComponent) { }
+    private projsComponente: ProjsComponent, 
+    private app: AppComponent) { }
 
   isLogged = false;
   proyectoModalOn = false;
@@ -46,19 +48,21 @@ export class ProjsListarComponent implements OnInit {
   }
 
   onDeleteProyecto(id?: number) {
+    this.app.domSpinner(true);
     console.log(id);
     if (id != undefined) {
       this.proyectoService.deleteProyecto(id)
         .subscribe(data => { }, err => {
           let er = alert(JSON.stringify(err.error.text));
           this.projsComponente.reloadME();
-
+          this.app.domSpinner(false);
         }
         );
     }
   }
 
   onUpdateProj(id?: number) {
+    this.app.domSpinner(true);
     let cont = this.proyectoLista.find(x => x.id == id);
     /* const cont = new Proyecto(this.accesoUrl, this.persona, this.red, this.id); */
     if (id != undefined && cont != undefined) {
@@ -67,6 +71,7 @@ export class ProjsListarComponent implements OnInit {
           this.cargarProyecto();
           let a = alert("Modificada la proyecto");
           this.projsComponente.reloadME();
+          this.app.domSpinner(false);
         }
       )
     }

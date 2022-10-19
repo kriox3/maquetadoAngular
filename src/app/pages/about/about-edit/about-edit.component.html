@@ -13,45 +13,45 @@
                 <div class="modal-header" style=" border-color: #000;">
                     <h5 class="modal-title" style="color: white;">Modificar información</h5>
                     <div type="button" class="botonito" data-bs-dismiss="modal" aria-label="Close">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <i class="bx bx-x bx-sm"></i>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <i class="bx bx-x bx-sm"></i>
                     </div>
                 </div>
                 <div class="modal-body">
                     <form (ngSubmit)="onUpdate()" #f="ngForm">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" 
-                                name="nombre" [(ngModel)]="aboutMe.nombre" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre"
+                                [(ngModel)]="aboutMe.nombre" required>
                         </div>
                         <div class="form-group">
                             <label for="apellido">Apellido</label>
-                            <input type="text" class="form-control" id="apellido" 
-                                name="apellido" [(ngModel)]="aboutMe.apellido" required>
+                            <input type="text" class="form-control" id="apellido" name="apellido"
+                                [(ngModel)]="aboutMe.apellido" required>
                         </div>
                         <div class="form-group">
                             <label for="foto">Foto</label>
-                            <input type="text" class="form-control" id="foto" name="foto"
-                                [(ngModel)]="aboutMe.foto" required>
+                            <input type="text" class="form-control" id="foto" name="foto" [(ngModel)]="aboutMe.foto"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="localidad">Localidad</label>
-                            <input type="text" class="form-control" id="localidad" 
-                                name="localidad" [(ngModel)]="aboutMe.localidad"  required>
+                            <input type="text" class="form-control" id="localidad" name="localidad"
+                                [(ngModel)]="aboutMe.localidad" required>
                         </div>
                         <div class="form-group">
                             <label for="info">Informacion</label>
-                            <input type="text" class="form-control" id="info"
-                                name="info" [(ngModel)]="aboutMe.info" required>
-                        </div>     
+                            <input type="text" class="form-control" id="info" name="info" [(ngModel)]="aboutMe.info"
+                                required>
+                        </div>
 
                         <hr>
                         <div>
-                            <button type="submit" class="btn botonito btn-verde mb-3" 
-                                style="margin: auto; display:flex" [disabled]="!f.valid">
+                            <button type="submit" class="btn botonito btn-verde mb-3" style="margin: auto; display:flex"
+                                [disabled]="!f.valid">
                                 <span></span>
                                 <span></span>
                                 <span></span>

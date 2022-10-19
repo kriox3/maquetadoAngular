@@ -5,9 +5,9 @@
 
 
         <table class="mx-auto">
-          <tbody >
+          <tbody>
             <tr class="row" style="margin:auto">
-              <td *ngFor="let dato of redes" class="col-2" style="margin:auto">
+              <td *ngFor="let dato of listaContacto" class="col-2" style="margin:auto">
                 <a [href]="dato.accesoUrl" class="mx-4" target="_blank"><i
                     [ngClass]="getRed(dato.red.red)+' bx bx-tada bx-lg bx-burst-hover'" style="color:#0dcaf0"></i></a>
               </td>

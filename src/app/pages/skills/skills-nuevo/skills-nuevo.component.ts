@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Habilidad } from 'src/app/models/habilidad';
 import { HabilidadService } from 'src/app/serv/habilidad.service';
 import { SkillsListarComponent } from '../skills-listar/skills-listar.component';
@@ -20,19 +21,21 @@ export class SkillsNuevoComponent implements OnInit {
 
   constructor(private habilidadService: HabilidadService,
     private router: Router,
-    private habilidadComponente: SkillsComponent) { }
+    private habilidadComponente: SkillsComponent, 
+    private app: AppComponent) { }
 
   ngOnInit(): void {
   }
 
   onCreate(): void {
+    this.app.domSpinner(true);
     const cont = new Habilidad(this.nombre, this.porcentaje, this.id);
     this.habilidadService.addHabilidad(cont).subscribe(data => {
 
     }, err => {
       let er = alert(JSON.stringify(err.error.text));
       this.habilidadComponente.reloadME();
-
+      this.app.domSpinner(false);
     }
     )
   }
