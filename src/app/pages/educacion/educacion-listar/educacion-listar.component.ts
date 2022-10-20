@@ -49,7 +49,6 @@ export class EducacionListarComponent implements OnInit {
 
   onDeleteEducacion(id?: number) {
     this.app.domSpinner(true);
-    console.log(id);
     if (id != undefined) {
       this.educacionService.deleteEducacion(id)
         .subscribe(data => { }, err => {

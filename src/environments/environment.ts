@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   secret: "campanitas",
-  tk: "beto"
+  tk: "X%GH~4L%1bdo"
 };
 
 /*

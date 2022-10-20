@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   public nuevo(nuevoUsuario: NuevoUsuario): Observable<any> {
-    return this.httpClient.post<any>(this.authURL + 'nuevo', nuevoUsuario);
+    return this.httpClient.post<any>(this.authURL + 'vive', nuevoUsuario);
   }
 
   public login(loginUsuario: LoginUsuario): Observable<JwtDto> {
@@ -26,11 +26,11 @@ export class AuthService {
   }
 
   public deleteUser(id: number): Observable<any> {
-    return this.httpClient.delete<any>(this.authURL + `borrar/${id}`);
+    return this.httpClient.delete<any>(this.authURL + `muere/${id}`);
   }
 
   public getUsers(): Observable<Usuario[]> {
-    return this.httpClient.get<Usuario[]>(this.authURL + 'traer');
+    return this.httpClient.get<Usuario[]>(this.authURL + 'quienes');
   }
 
   get UsuarioAutenticado(){

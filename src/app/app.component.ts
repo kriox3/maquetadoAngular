@@ -42,10 +42,8 @@ export class AppComponent implements OnInit {
     if (x) {
       if (queCosa) {
         x.style.display = 'block';
-        console.log('encendiendo');
       } else {
         x.style.display = "none";
-        console.log('apagando');
       }
     }
   }

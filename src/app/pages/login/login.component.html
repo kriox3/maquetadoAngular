@@ -4,10 +4,10 @@
     <div class="modal-content" style="background-color: #404040; color: white">
       <div class="modal-body">
         <form [formGroup]="form" (ngSubmit)="onLogin()" #f="ngForm" novalidate>
-          <img src="/assets/img/APlogo.png" alt="" width="200" (click)="onSecret()"/>
+          <img src="/assets/img/APlogo.png" alt="" width="200" (dblclick)="onSecret($event)"/>
           <div class="form-floating">
             <input type="email" formControlName="email" class="form-control" id="floatingInput"
-              [(ngModel)]="nombreUsuario" required placeholder="name@example.com">
+              [(ngModel)]="nombreUsuario" required>
             <label for="floatingInput" class="text-dark">Usuario</label>
           </div>
           <div *ngIf="Mail?.errors  && Mail?.touched">
@@ -17,7 +17,7 @@
           </div>
           <div class="form-floating">
             <input type="password" formControlName="password" [class.border-danger]="MailValid" class="form-control"
-              id="floatingPassword" [(ngModel)]="password" required placeholder="Password">
+              id="floatingPassword" [(ngModel)]="password" required>
             <label for="floatingPassword" class="text-dark">Contraseña</label>
           </div>
 

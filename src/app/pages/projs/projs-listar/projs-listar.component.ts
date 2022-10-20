@@ -49,7 +49,6 @@ export class ProjsListarComponent implements OnInit {
 
   onDeleteProyecto(id?: number) {
     this.app.domSpinner(true);
-    console.log(id);
     if (id != undefined) {
       this.proyectoService.deleteProyecto(id)
         .subscribe(data => { }, err => {

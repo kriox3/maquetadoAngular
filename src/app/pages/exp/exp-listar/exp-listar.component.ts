@@ -50,7 +50,6 @@ export class ExpListarComponent implements OnInit {
 
   onDeleteExperiencia(id?: number) {
     this.app.domSpinner(true);
-    console.log(id);
     if (id != undefined) {
       this.experienciaService.deleteExperiencia(id)
         .subscribe(data => { }, err => {

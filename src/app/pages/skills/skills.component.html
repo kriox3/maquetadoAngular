@@ -8,8 +8,8 @@
 
         <div class="container">
           <div class="row">
-            <div class="col-md-4 my-4" *ngFor="let dato of listaHabilidad">
-              <span class="lead py-3 text-light" style="font-size: 1.2rem;">{{dato.nombre}}</span>
+            <div class="col-sm-3 my-4" *ngFor="let dato of listaHabilidad">
+              <span class="lead py-3 text-light mb-2" style="font-size: 1.2rem;">{{dato.nombre}}</span>
               <div class="centrarlo">
                 <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" [style]="'--value:'+dato.porcentaje">
                 </div>

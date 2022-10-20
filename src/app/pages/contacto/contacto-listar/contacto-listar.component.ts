@@ -64,7 +64,6 @@ export class ContactoListarComponent implements OnInit {
 
   onDeleteContacto(id?: number) {
     this.app.domSpinner(true);
-    console.log(id);
     if (id != undefined) {
       this.contactoService.deleteContacto(id)
         .subscribe(data => { }, err => {

@@ -22,7 +22,6 @@ export class EducacionNuevoComponent implements OnInit {
   educacionNewModalOn = false;
 
   constructor(private educacionService: EducacionService,
-    private educComp: EducacionListarComponent,
     private router: Router,
     private educacionComponente: EducacionComponent, 
     private app: AppComponent) { }

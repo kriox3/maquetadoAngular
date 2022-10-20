@@ -47,7 +47,6 @@ export class SkillsListarComponent implements OnInit {
 
   onDeleteHabilidad(id?: number) {
     this.app.domSpinner(true);
-    console.log(id);
     if (id != undefined) {
       this.habilidadService.deleteHabilidad(id)
         .subscribe(data => { }, err => {

@@ -35,6 +35,8 @@ import { ProjsNuevoComponent } from './pages/projs/projs-nuevo/projs-nuevo.compo
 import { SkillsListarComponent } from './pages/skills/skills-listar/skills-listar.component';
 import { SkillsNuevoComponent } from './pages/skills/skills-nuevo/skills-nuevo.component';
 import { SimonComponent } from './pages/login/simon/simon.component';
+import { SimonListarComponent } from './pages/login/simon/simon-listar/simon-listar.component';
+import { SimonNuevoComponent } from './pages/login/simon/simon-nuevo/simon-nuevo.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { SimonComponent } from './pages/login/simon/simon.component';
     ProjsNuevoComponent,
     SkillsListarComponent,
     SkillsNuevoComponent,
-    SimonComponent
+    SimonComponent,
+    SimonListarComponent,
+    SimonNuevoComponent
   ],
   imports: [
     BrowserModule,

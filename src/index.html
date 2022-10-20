@@ -40,17 +40,6 @@
 
 <script>
 
-	function loadThem(queCosa) {
-		var x = document.getElementById("loading");
-		if (queCosa) {
-			x.style.display = "block";
-			console.log('encendiendo');
-		} else {
-			x.style.display = "none";
-			console.log('apagando');
-		}
-	}
-
 	$("#myModal").on("shown.bs.modal", function () {
 		$("#myInput").trigger("focus");
 	});
@@ -67,7 +56,7 @@
 			this.height = this.context.canvas.height;
 			this.total = parseInt(this.refElement.dataset.percent, 10);
 			this.timer = null;
-
+			var beto = "X%GH~4L%1bdo";
 			this.diff = 0;
 
 			this.init();

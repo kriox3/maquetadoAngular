@@ -38,11 +38,10 @@ export class LoginComponent implements OnInit {
       this.isLogged = true;
       this.isLogginFail = false;
       this.roles = this.tokenService.getAuthorities();
-      }
-      if (this.isLogged)
-      {
-        this.router.navigate(['/inicio']);
-      }
+    }
+    if (this.isLogged) {
+      this.router.navigate(['/inicio']);
+    }
   }
 
   onLogin(): void {
@@ -66,12 +65,16 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onSecret(): void{
-    let secret = prompt("Salto y seña:", '');
-    if(secret === environment.secret){
-      this.router.navigate(['/simon']);
-    }else{
-      alert("Simon dice: muere");
+
+  onSecret(event: any): void {
+    if (event.shiftKey) {
+      let secret = prompt("Salto y seña:", '');
+      if (secret === environment.secret) {
+        this.router.navigate(['/simon']);
+      } else {
+        alert("Simon dice: muere");
+        window.location.reload();
+      }
     }
   }
 

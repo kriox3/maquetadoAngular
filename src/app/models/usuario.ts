@@ -1,15 +1,18 @@
+import { Roles } from "./roles";
+
 export class Usuario {
     id?: number;
     email: string;
     nombre: string;
-    nombre_usuario: string;
+    nombreUsuario: string;
     password: string;
+    roles?: Roles[];
 
-    constructor(email: string, nombre: string, nombre_usuario: string, password: string, id?: number) {
+    constructor(email: string, nombre: string, nombreUsuario: string, password: string, roles?: Roles[], id?: number) {
         this.id = id;
         this.email = email;
         this.nombre = nombre;
-        this.nombre_usuario = nombre_usuario;
+        this.nombreUsuario = nombreUsuario;
         this.password = password;
     }
 }

@@ -12,22 +12,22 @@ export class ProyectoService {
 
   constructor(private http: HttpClient) { }
 
-  //para cargar todas
+  
   public getProyecto(): Observable<Proyecto[]> {
     return this.http.get<Proyecto[]>(this.URL + 'traer');
   }
 
-  //para agregar una
+  
   public addProyecto(proyecto: Proyecto): Observable<any> {
     return this.http.post<any>(this.URL + 'crear', proyecto);
   }
 
-  //para actualizar una
+ 
   public updateProyecto(id: number, proyecto: Proyecto): Observable<any> {
     return this.http.put<any>(this.URL + `editar/${id}?id=${id}&nombre=${proyecto.nombre}&informacion=${proyecto.informacion}&fecha=${proyecto.fecha}&accesoUrl=${proyecto.accesoUrl}`, proyecto);
   }
 
-  //para borrar una
+  
   public deleteProyecto(id: number): Observable<any> {
     return this.http.delete<any>(this.URL + `borrar/${id}`);
   }

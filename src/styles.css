@@ -368,8 +368,10 @@ footer {
   initial-value: 0;
 }
 
+/* circulo skills */
+
 div[role="progressbar"] {
-  --size: 12rem;
+  --size: 7rem;
   --fg: #089994;
   --letras: white;
   --bg: #034d4a;

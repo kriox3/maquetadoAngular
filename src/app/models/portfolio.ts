@@ -7,5 +7,4 @@ export class Portfolio {
 	oficina_persona?: string;
 	localidad_persona?: string;
 	info_persona?: string;
-	redes?: Array<any>;
 }

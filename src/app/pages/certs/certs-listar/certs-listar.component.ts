@@ -46,7 +46,6 @@ export class CertsListarComponent implements OnInit {
   }
 
   onDeleteCertificacion(id?: number) {
-    console.log(id);
     if (id != undefined) {
       this.certificacionService.deleteCertificacion(id)
         .subscribe(data => { }, err => {
